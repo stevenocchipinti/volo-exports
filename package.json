@@ -1,0 +1,10 @@
+{
+  "name": "travel-blogs-cleaned-html",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Steve Occhipinti <dev@stevenocchipinti.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jsdom": "^16.4.0"
+  }
+}
