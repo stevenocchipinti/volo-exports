@@ -19,6 +19,7 @@ files.forEach(file => {
   // Hack UI
   document.querySelector(".sub-view-header-after")?.remove()
   document.querySelector(".content-menu")?.remove()
+  document.querySelector(".content-menu-fixed")?.remove()
   document.querySelector(".sub-view-top-btn-container")?.remove()
   document.querySelector(".more-travel")?.remove()
   document.querySelector(".sub-view-guide-banner")?.remove()
