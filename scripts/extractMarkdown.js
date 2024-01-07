@@ -16,14 +16,13 @@ const convertDayCell = (cell) => {
   const [year, monthNum, day] = cell
     .querySelector(".date-text")
     .innerText.split(".");
-  const month =
-    monthNum === "05" ? "May" : monthNum === "06" ? "June" : "XXXXXXXXX";
+  const month = monthNum === "12" ? "December" : "XXXXXXXXX";
 
   return `---
 title: ${title}
 description: ""
 featured: false
-seriesId: 2018-europe
+seriesId: 2019-japan-vietnam
 orderInSeries: ${order}
 pubDate: "${month} ${day} 20${year}"
 tags: []
@@ -41,8 +40,15 @@ const convertRouteCell = (cell) => {
 const convertImageCell = (cell) => {
   if (!cell.querySelector(".cell-image")) return false;
   const imgs = Array.from(cell.querySelectorAll("img"))
-    .map((i) => `  <Img src="${i.src}" />`) // TODO: Make this a relative URL
+    .map((i) => {
+      const src = i.src.replace(
+        /http:\/\/localhost:53409\/Taiwan-Vietnam\/day-.._files/,
+        "/src/content/travel/2019-taiwan-vietnam/assets",
+      );
+      return `  <Img src="${src}.jpg" aspectRatio={1} />`;
+    })
     .join("\n");
+
   return ["<Grid columns={2}>", imgs, "</Grid>\n", cell.innerText].join("\n");
 };
 
@@ -54,7 +60,11 @@ const convertMapCell = (cell) => {
 };
 
 const convertTextCell = (cell) => {
-  if (!cell.querySelector(".cell-text")) return false;
+  if (
+    !cell.querySelector(".cell-text") &&
+    !cell.querySelector(".cell-sub-title")
+  )
+    return false;
   return cell.innerText;
 };
 
